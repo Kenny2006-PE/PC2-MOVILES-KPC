@@ -15,7 +15,6 @@ class Ejercicio02 : AppCompatActivity() {
         binding = ActivityEjercicio02Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Register Button Action
         binding.btnRegistrar.setOnClickListener {
             if (validateInputs()) {
                 val intent = Intent(this, OrderDetailsActivity::class.java).apply {

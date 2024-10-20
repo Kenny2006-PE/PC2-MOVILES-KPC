@@ -14,19 +14,16 @@ class OrderDetailsActivity : AppCompatActivity() {
         binding = ActivityOrderDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Retrieve Data
         val nombreCliente = intent.getStringExtra("nombreCliente")
         val numeroCliente = intent.getStringExtra("numeroCliente")
         val productos = intent.getStringExtra("productos")
         val direccion = intent.getStringExtra("direccion")
 
-        // Set Data
         binding.tvNombreCliente.text = nombreCliente
         binding.tvNumeroCliente.text = numeroCliente
         binding.tvProductos.text = productos
         binding.tvUbicacion.text = direccion
 
-        // Llamar Button
         binding.btnLlamar.setOnClickListener {
             val intent = Intent(Intent.ACTION_DIAL).apply {
                 data = Uri.parse("tel:$numeroCliente")
@@ -34,7 +31,6 @@ class OrderDetailsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // WhatsApp Button
         binding.btnWsp.setOnClickListener {
             val mensaje = "Hola $nombreCliente, tus productos: $productos están en camino a la dirección: $direccion"
             val intent = Intent(Intent.ACTION_VIEW).apply {
@@ -43,7 +39,6 @@ class OrderDetailsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Maps Button
         binding.btnMaps.setOnClickListener {
             val gmmIntentUri = Uri.parse("geo:0,0?q=$direccion")
             val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
